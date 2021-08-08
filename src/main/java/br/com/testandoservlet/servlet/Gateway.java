@@ -12,6 +12,7 @@ import br.com.testandoservlet.actions.Action;
 import br.com.testandoservlet.actions.CreateCompanyAction;
 import br.com.testandoservlet.actions.DeleteCompanyAction;
 import br.com.testandoservlet.actions.ReadCompaniesAction;
+import br.com.testandoservlet.actions.ResponseAction;
 import br.com.testandoservlet.actions.UpdateCompanyAction;
 import br.com.testandoservlet.actions.UpdateCompanyFormAction;
 
@@ -29,20 +30,15 @@ public class Gateway extends HttpServlet {
 		}
 
 		String className = "br.com.testandoservlet.actions." + paramAction + "Action";
-		String name = null;
+		ResponseAction responseAction = null;
 		try {
 			Class clazz = Class.forName(className);
 			Action action = (Action) clazz.newInstance();
-			name = action.execute(req, res);
+			responseAction = action.execute(req, res);
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			throw new ServletException(e);
 		}
-		
-		String[] path = name.split(":");
-		if (path[0].equals("forward")) {
-			req.getRequestDispatcher("WEB-INF/views/" + path[0]).forward(req, res);
-		} else {
-			res.sendRedirect(path[1]);
-		}
+
+		responseAction.execute();
 	}
 }

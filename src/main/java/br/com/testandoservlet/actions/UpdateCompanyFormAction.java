@@ -10,14 +10,14 @@ import br.com.testandoservlet.servlet.db.Banco;
 import br.com.testandoservlet.servlet.models.Empresa;
 
 public class UpdateCompanyFormAction implements Action {
-	public String execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public ResponseAction execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("id"));
 		Empresa empresa = Banco.getEmpresaById(id);
 
 		if (empresa != null ) {
 			req.setAttribute("empresa", empresa);
-			return "forward:form-atualiza.jsp";
+			return new RequestDispatcherAction(req, res, "WEB-INF/views/form-atualiza.jsp");
 		}
-		return "redirect:home?action=ReadCompanies";
+		return new RedirectAction(res, "home?action=ReadCompanies");
 	}
 }

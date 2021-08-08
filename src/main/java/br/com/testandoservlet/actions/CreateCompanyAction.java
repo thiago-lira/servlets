@@ -9,13 +9,15 @@ import br.com.testandoservlet.servlet.db.Banco;
 import br.com.testandoservlet.servlet.models.Empresa;
 
 public class CreateCompanyAction implements Action {
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public ResponseAction execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String empresa = request.getParameter("empresa");
 
 		Banco.adiciona(new Empresa(empresa));
 		
 		request.setAttribute("empresa", empresa);
 
-		return "redirect:home?action=ReadCompanies";
+		RequestDispatcherAction action = new RequestDispatcherAction(request, response, "home?action=ReadCompanies");
+
+		return action;
 	}
 }

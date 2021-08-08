@@ -9,7 +9,7 @@ import br.com.testandoservlet.servlet.db.Banco;
 import br.com.testandoservlet.servlet.models.Empresa;
 
 public class UpdateCompanyAction implements Action {
-	public String execute(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	public ResponseAction execute(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		String nome = req.getParameter("nome");
 		Empresa empresa = Banco.getEmpresaById(id);
@@ -18,6 +18,6 @@ public class UpdateCompanyAction implements Action {
 			empresa.setNome(nome);
 		}
 		
-		return "redirect:home?action=ReadCompanies";
+		return new RedirectAction(res, "home?action=ReadCompanies");
 	}
 }

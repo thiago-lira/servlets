@@ -1,4 +1,4 @@
-package br.com.testandoservlet.servlet.models;
+package br.com.testandoservlet.models;
 
 public class Empresa {
 	private int id;

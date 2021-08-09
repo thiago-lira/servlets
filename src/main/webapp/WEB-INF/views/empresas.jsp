@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="br.com.testandoservlet.servlet.models.Empresa, java.util.List" %>
+<%@ page import="br.com.testandoservlet.models.Empresa, java.util.List" %>
 <%
 	List<Empresa> empresas = (List<Empresa>) request.getAttribute("empresas"); 
 %>

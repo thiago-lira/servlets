@@ -5,8 +5,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.testandoservlet.servlet.db.Banco;
-import br.com.testandoservlet.servlet.models.Empresa;
+import br.com.testandoservlet.db.Banco;
+import br.com.testandoservlet.models.Empresa;
 
 public class UpdateCompanyAction implements Action {
 	public ResponseAction execute(HttpServletRequest req, HttpServletResponse res) throws IOException {

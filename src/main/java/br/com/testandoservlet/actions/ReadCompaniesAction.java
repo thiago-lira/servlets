@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.testandoservlet.servlet.db.Banco;
+import br.com.testandoservlet.db.Banco;
 
 public class ReadCompaniesAction implements Action {
 	public ResponseAction execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

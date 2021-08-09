@@ -13,10 +13,9 @@ public class RedirectAction implements ResponseAction {
 		this.res = res;
 		this.view = view;
 	}
-	
+
 	@Override
 	public void execute() throws ServletException, IOException {
 		res.sendRedirect(view);
 	}
-
 }

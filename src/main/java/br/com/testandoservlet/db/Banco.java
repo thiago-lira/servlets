@@ -43,4 +43,8 @@ public class Banco {
 		}
 		return null;
 	}
+
+	public static void saveUser(User user) {
+		usuarios.add(user);
+	}
 }
